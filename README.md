@@ -52,6 +52,30 @@ pip install -r requirements.txt
 ```
 
 ---
+## Pipeline
+
+본 프로젝트의 전체 분석 및 모델링 Pipeline은 다음과 같이 구성했습니다.
+
+Raw `.mat` Data  
+→ Preprocessing  
+→ 초기 100 Cycle 추출  
+→ Feature Engineering (15개 후보 Feature)  
+→ Batch 1 기반 Single Feature Selection  
+→ `deltaQ_std` 선정  
+→ Gradient Boosting 학습  
+→ Batch 2 Independent Test  
+→ Error Analysis
+
+- `src/preprocess.py`: 원본 데이터 전처리
+- `src/features.py`: 초기 Cycle 기반 Feature 생성
+- `src/train.py`: 모델 정의 및 학습
+- `notebooks/01_EDA.ipynb`: EDA 및 모델링 전략 수립
+- `notebooks/02_feature_engineering.ipynb`: Feature Engineering
+- `notebooks/03_modeling.ipynb`: Feature Selection, 모델 학습 및 평가
+
+---
+
+
 
 # EDA
 
